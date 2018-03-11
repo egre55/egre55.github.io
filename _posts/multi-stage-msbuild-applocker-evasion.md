@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Multi-Stage MSBuild AppLocker Evasion
-published: false
+published: true
 ---
 ![msbuild-csproj.yml]({{ site.baseurl }}/images/msbuild-csproj.png)
 
