@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Multi-Stage MSBuild AppLocker Evation
+title: Multi-Stage MSBuild AppLocker Evasion
 published: true
 ---
 
