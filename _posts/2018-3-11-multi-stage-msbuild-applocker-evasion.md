@@ -7,4 +7,4 @@ published: true
 
 
 
-![rules]({{ site.url }}/images/.png)
+![rules]({{ site.url }}/images/applocker-default-rules.png)
