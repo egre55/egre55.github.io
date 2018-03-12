@@ -16,3 +16,13 @@ AppLocker is a commonly used whitelisting technology and is built into Windows. 
 Since Powershell has gained recognition for being the attackers language of choice, many organisations are additionally blocking it. However, blocking powershell.exe is often not sufficient and there are many methods by which PowerShell can be instantiated to send a reverse shell reaching out of the organisation to an attacker.
 
 The post will document one such method, with the "misplaced trust binary" MSBuild.exe.
+
+<script src="https://gist.github.com/egre55/563159175f8d6c1d31d7f3af77357549.js"></script>
+
+
+<script src="https://gist.github.com/egre55/7a6b6018c9c5ae88c63bdb23879df4d0.js"></script>
+
+
+<script src="https://gist.github.com/egre55/c058744a4240af6515eb32b2d33fbed3.js"></script>
+
+
