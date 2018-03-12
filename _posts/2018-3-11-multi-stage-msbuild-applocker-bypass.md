@@ -24,5 +24,3 @@ The post will document one such method, with the "misplaced trust binary" MSBuil
 
 
 <script src="https://gist.github.com/egre55/c058744a4240af6515eb32b2d33fbed3.js"></script>
-
-
