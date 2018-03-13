@@ -2,14 +2,15 @@
 layout: page
 title: About
 permalink: /about/
+published: true
 ---
 
-Some information about you!
+I'm a SysAdmin, Security Engineer and Internal Penetration Tester
 
-### More Information
+### Talks, Presentations, Random
 
 A place to include any other types of information that you'd like to include about yourself.
 
 ### Contact me
 
-[email@domain.com](mailto:email@domain.com)
+@egre55
