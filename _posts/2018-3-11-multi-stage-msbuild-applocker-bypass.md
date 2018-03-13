@@ -1,7 +1,7 @@
 ---
 layout: post
 title: MSBuild AppLocker Bypass Phishing Payload
-published: false
+published: true
 ---
 ![msbuild]({{ site.url }}/images/msbuild-csproj.png){: .center-image }
 
