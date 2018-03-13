@@ -3,7 +3,7 @@ layout: post
 title: Multi-Stage MSBuild AppLocker Bypass
 published: true
 ---
-![msbuild]({{ site.url }}/images/msbuild-csproj.png)
+![msbuild]({{ site.url }}/images/msbuild-csproj.png){: .center-image }
 
 ### With regular external vulnerability scans and (hopefully) pentration tests being undertaken, the perimeter is typically not the easy route into an organisation.
 
@@ -11,13 +11,13 @@ People click, and despite simulated phishing campaigns and training there can ne
 
 AppLocker is a commonly used whitelisting technology and is built into Windows. The default AppLocker rules for Windows 10 are listed below.
 
-![rules]({{ site.url }}/images/applocker-default-rules.png)
+![rules]({{ site.url }}/images/applocker-default-rules.png){: .center-image }
 
 Since Powershell has gained recognition for being the attackers language of choice, many organisations are [increasingly] additionally blocking it. However, blocking powershell.exe is often not sufficient and there are many methods by which PowerShell can be instantiated to send a reverse shell reaching out of the organisation to an attacker.
 
 The post will document one such method, with the "misplaced trust binary" MSBuild.exe. In this scenario, the company has enabled AppLocker with default rules and has also blocked Powershell.
 
-![rules]({{ site.url }}/images/applocker-rules.png)
+![rules]({{ site.url }}/images/applocker-rules.png){: .center-image }
 
 We can pass a ".csproj" (Visual Studio .NET C# Project file) to MSBuild and have it execute C#, in order to instantiate a Powershell runspace using System.Management.Automation.dll. The powashell.csproj file below by Casey Smith builds upon Jared Atkinson's And Justin Warner's work.
 
