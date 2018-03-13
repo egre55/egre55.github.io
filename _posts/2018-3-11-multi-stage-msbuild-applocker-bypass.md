@@ -33,7 +33,7 @@ Good. But now we need a means of delivering the project file and executing MSBui
 
 John Lambert (@JohnLaTwC) regularly shares interesting phishing lures and payloads, if you need inspiration for simulated phishing campaigns ;). I find the "Document created in newer/older Office version" lures especially convincing. John has put together [this](https://t.co/OwH28ltngy) compendium of macro based lures on one-drive (link below), which is great for educating users about the different lures attackers use.
 
-Now that our "malicious" document has been crafted 
+Now that our "malicious" document has been crafted we can test this out in the lab.
 
 
 
