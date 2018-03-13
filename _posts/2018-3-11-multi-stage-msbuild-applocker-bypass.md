@@ -31,7 +31,7 @@ We will have the runspace download and execute our PowerShell reverse shell:
 
 Good. But now we need a means of delivering the project file and executing MSBuild. The macro below will download the csproj file to disk In order for the user to execute the macro the document needs to be dressed appropriately. (John Lambert...)
 
-https://twitter.com/JohnLaTwC/status/964271442392113152
+https://pbs.twimg.com/media/DWHHdvJV4AAvl22.jpg
 
 
 <script src="https://gist.github.com/egre55/563159175f8d6c1d31d7f3af77357549.js"></script>
