@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Multi-Stage MSBuild AppLocker Bypass
+title: Staged MSBuild AppLocker Bypass Phishing Payload
 published: true
 ---
 ![msbuild]({{ site.url }}/images/msbuild-csproj.png){: .center-image }
