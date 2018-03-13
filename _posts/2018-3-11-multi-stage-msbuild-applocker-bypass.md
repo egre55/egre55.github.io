@@ -31,7 +31,7 @@ our shell.ps1:
 
 <script src="https://gist.github.com/egre55/c058744a4240af6515eb32b2d33fbed3.js"></script>
 
-Good. But now we need a means of delivering the project file and executing MSBuild. The macro below will download the csproj file to disk.
+Good. But now we need a means of delivering the project file and executing MSBuild. The macro below will download the csproj file to disk and execute the payload.
 
 <script src="https://gist.github.com/egre55/563159175f8d6c1d31d7f3af77357549.js"></script>
 
