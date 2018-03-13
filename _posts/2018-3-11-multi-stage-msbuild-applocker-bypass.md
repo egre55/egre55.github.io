@@ -7,7 +7,7 @@ published: false
 
 ### With regular external vulnerability scans and (hopefully) pentration tests being undertaken, the perimeter is typically not the easy route into an organisation.
 
-People click, and despite simulated phishing campaigns and training there can never be complete assurance against credential divulgence or execution of malicious code.  So it is critically important that organisations implement a multi-layered "defence in depth" strategy. Application whitelisting is an important component of such a strategy, and is an effective means of ensuring that only _known good_ applications can run.
+People click, and despite simulated phishing campaigns and training there can never be complete assurance against credential divulgence or execution of malicious code.  So it is critically important that organisations implement a multi-layered "defence in depth" strategy. Application whitelisting is an important component of such a strategy, and is an effective means of ensuring that only approved applications can run.
 
 AppLocker is a commonly used whitelisting technology and is built into Windows. The default AppLocker rules for Windows 10 are listed below.
 
@@ -19,7 +19,7 @@ The post will document one such method, with the "misplaced trust binary" MSBuil
 
 ![rules]({{ site.url }}/images/applocker-rules.png){: .center-image }
 
-We can pass a ".csproj" (Visual Studio .NET C# Project file) to MSBuild and have it execute C#, in order to instantiate a Powershell runspace using System.Management.Automation.dll. The powashell.csproj file below by Casey Smith builds upon Jared Atkinson's And Justin Warner's work.
+We can pass a ".csproj" (Visual Studio .NET C# Project file) to MSBuild and have it execute C#, in order to instantiate a Powershell runspace using System.Management.Automation.dll. The powashell.csproj file below by Casey Smith (@SubTee) builds upon Jared Atkinson's (@jaredcatkinson) and Justin Warner's (@sixdub) work.
 
 <script src="https://gist.github.com/egre55/7a6b6018c9c5ae88c63bdb23879df4d0.js"></script>
 
@@ -29,7 +29,13 @@ Within this we execute our PowerShell 3.0+ download cradle:
 
 <script src="https://gist.github.com/egre55/c058744a4240af6515eb32b2d33fbed3.js"></script>
 
-Good. But now we need a means of delivering the project file and executing MSBuild. The macro below will download the csproj file to disk In order for the user to execute the macro the document needs to be dressed appropriately. John Lambert regularly shares interesting phishing lures and payloads, and we... 
+Good. But now we need a means of delivering the project file and executing MSBuild. The macro below will download the csproj file to disk. In order to stand a chance of the macro being executed, we need to dress the document appropriately.
+
+John Lambert (@JohnLaTwC) regularly shares interesting phishing lures and payloads, if you need inspiration for simulated phishing campaigns ;). The "Document created in newer Office version" lures are especially convincing. John has put together a compendium of macro based lures on one-drive (link below), which is great for educating users about the different lures attackers use.
+
+https://t.co/OwH28ltngy
+
+Now that our "malicious" document has been crafted 
 
 https://pbs.twimg.com/media/DWHHdvJV4AAvl22.jpg
 
