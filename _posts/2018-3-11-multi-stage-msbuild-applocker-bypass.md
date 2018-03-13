@@ -31,11 +31,11 @@ Within this we execute our PowerShell 3.0+ download cradle:
 
 Good. But now we need a means of delivering the project file and executing MSBuild. The macro below will download the csproj file to disk. In order to stand a chance of the macro being executed, we need to dress the document appropriately.
 
-John Lambert (@JohnLaTwC) regularly shares interesting phishing lures and payloads, if you need inspiration for simulated phishing campaigns ;). The "Document created in newer Office version" lures are especially convincing. John has put together [this](https://t.co/OwH28ltngy) compendium of macro based lures on one-drive (link below), which is great for educating users about the different lures attackers use.
+John Lambert (@JohnLaTwC) regularly shares interesting phishing lures and payloads, if you need inspiration for simulated phishing campaigns ;). I find the "Document created in newer/older Office version" lures especially convincing. John has put together [this](https://t.co/OwH28ltngy) compendium of macro based lures on one-drive (link below), which is great for educating users about the different lures attackers use.
 
 Now that our "malicious" document has been crafted 
 
-https://pbs.twimg.com/media/DWHHdvJV4AAvl22.jpg
+
 
 
 <script src="https://gist.github.com/egre55/563159175f8d6c1d31d7f3af77357549.js"></script>
