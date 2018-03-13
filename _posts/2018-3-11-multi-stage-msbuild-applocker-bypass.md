@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Multi-Stage MSBuild AppLocker Bypass
-published: false
+published: true
 ---
 ![msbuild]({{ site.url }}/images/msbuild-csproj.png)
 
@@ -35,5 +35,3 @@ https://pbs.twimg.com/media/DWHHdvJV4AAvl22.jpg
 
 
 <script src="https://gist.github.com/egre55/563159175f8d6c1d31d7f3af77357549.js"></script>
-
-
