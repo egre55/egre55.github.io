@@ -51,5 +51,6 @@ Once the user opens the document and enables macros, the powashell.csproj is dow
 
 We can see that this payload is also an effective means of bypassing PowerShell Contrained Language mode.
 
-Improvements
+We can see the danger of "misplaced trust" binaries such as MSBuild. Companies should block their use unless explicitely required for certain users such as developers. Oddvar Moe maintains an excellent [list](https://github.com/api0cradle/UltimateAppLockerByPassList) of AppLocker bypass techniques, which makes an excellent starting point of the Windows binaries that IT departments should consider blocking.
+
 Mitigations
