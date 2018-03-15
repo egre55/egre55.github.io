@@ -19,7 +19,7 @@ The post will document one such method, with the "misplaced trust binary" MSBuil
 
 ![rules]({{ site.url }}/images/applocker-rules.png){: .center-image }
 
-We can pass a ".csproj" (Visual Studio .NET C# Project file) to MSBuild and have it execute C# and instantiate a Powershell runspace using the System.Management.Automation.dll assembly. The powashell.csproj file below by Casey Smith (@SubTee) builds upon Jared Atkinson's (@jaredcatkinson) and Justin Warner's (@sixdub) work.
+We can pass a ".csproj" (Visual Studio .NET C# Project file) to MSBuild and have it execute C# and instantiate a Powershell runspace using the System.Management.Automation.dll assembly. The powashell.csproj file below by Casey Smith ([@SubTee](https://twitter.com/subtee)) builds upon Jared Atkinson's ([@jaredcatkinson](https://twitter.com/jaredcatkinson)) and Justin Warner's ([@sixdub](https://twitter.com/sixdub)) work.
 
 <script src="https://gist.github.com/egre55/7a6b6018c9c5ae88c63bdb23879df4d0.js"></script>
 
