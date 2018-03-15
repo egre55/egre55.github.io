@@ -63,6 +63,7 @@ However, there are multiple methods an attacker could use to instantiate a Power
 
 ... and so the back and forth attacker/defender dance continues :)
 
+An "assume breach" mentality is paramount, but before compromise we have to make it as hard as possible for an attacker to gain that foothold.
 
 
 
