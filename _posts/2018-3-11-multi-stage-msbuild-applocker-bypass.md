@@ -39,9 +39,9 @@ The `WindowType` parameter of the Shell function has been set to `vbHide` in ord
 
 John Lambert ([@JohnLaTwC](https://twitter.com/johnlatwc)) regularly shares interesting phishing lures and payloads, if you need inspiration for your simulated phishing campaigns. The `Document created in newer/older Office version` lure is one I find especially convincing. John has also put together [this](https://t.co/OwH28ltngy) compendium of macro based lures, which is great for educating users about the different techniques attackers use.
 
-Our FailedDeliveryNotification.docx:
+Our FailedPayment.doc lure:
 
-
+![lure]({{ site.url }}/images/phishing-lure.png){: .center-image }
 
 Now that our "malicious" document has been created we can test it out.
 
