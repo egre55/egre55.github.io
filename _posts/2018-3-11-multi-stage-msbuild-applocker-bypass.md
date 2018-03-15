@@ -45,7 +45,7 @@ FailedDeliveryNotification.docx:
 
 Now that our "malicious" document has been created we can test it out.
 
-Once the user opens the document and enables macros, the powashell.csproj is downloaded for MSBuild to execute, which in turn downloads and executes the Powershell reverse shell one-liner.
+Once the user opens the document and enables macros, the powashell.csproj is downloaded for MSBuild to execute, which in turn downloads and executes the Powershell reverse shell one-liner. All completely invisible to the user.
 
 ![rules]({{ site.url }}/images/shell.png){: .center-image }
 
@@ -53,4 +53,17 @@ We can see that this payload is also an effective means of bypassing PowerShell 
 
 We can see the danger of "misplaced trust" binaries such as MSBuild. Companies should block their use unless explicitely required for certain users such as developers. Oddvar Moe maintains an excellent [list](https://github.com/api0cradle/UltimateAppLockerByPassList) of AppLocker bypass techniques, which makes an excellent starting point of the Windows binaries that IT departments should consider blocking.
 
+If possible, companies should also block macros for users who don't need this functionality. If a company has decided to block PowerShell using Application Whitelisting, then the following files should be added to the blacklist.
+
+```C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe
+C:\Windows\SysWOW64\WindowsPowerShell\v1.0\powershell.exe```
+
+However, an attacker would still be able to instantiate a Powershell session, for example by downloading a custom binary. Defenders could respond by...
+
+... and so the fight goes on :)
+
 Mitigations
+
+
+
+
