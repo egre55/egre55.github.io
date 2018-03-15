@@ -7,7 +7,7 @@ published: true
 
 ### With regular external vulnerability scans and (hopefully) pentration tests being undertaken, the perimeter is typically not the easy route into an organisation.
 
-People click, and so simulated phishing campaigns and user awareness training are extremely important. However, there can never be complete assurance against credential divulgence or execution of malicious code, so it is critical that organisations implement a multi-layered "defence in depth" strategy. Application whitelisting is an important component of such a strategy, and is an effective means of ensuring that only approved applications can run.
+People click, and so simulated phishing campaigns and user awareness training are extremely important. However, there can never be complete assurance against credential divulgence or execution of malicious code via crafted (or not so crafted) phishing attacks, and so it is critical that organisations implement a multi-layered "defence in depth" strategy. Application whitelisting is an important component of such a strategy, and is an effective means of ensuring that only approved applications can run.
 
 AppLocker is a commonly used whitelisting technology and is built into Windows. The default AppLocker rules for Windows 10 are listed below.
 
