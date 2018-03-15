@@ -51,18 +51,26 @@ Once the user opens the document and enables macros, the powashell.csproj is dow
 
 We can see that this payload is also an effective means of bypassing PowerShell Contrained Language mode.
 
-We can see the danger of "misplaced trust" binaries such as MSBuild. Companies should block their use unless explicitely required for certain users such as developers. Oddvar Moe maintains an excellent [list](https://github.com/api0cradle/UltimateAppLockerByPassList) of AppLocker bypass techniques, which makes an excellent starting point of the Windows binaries that IT departments should consider blocking.
+This is not a particularly advanced payload as the .csproj is written to disk, and no attempt was made to obfuscate any part of the payload.
 
-If possible, companies should also block macros for users who don't need this functionality. If a company has decided to block PowerShell using Application Whitelisting, then the following files should be added to the blacklist.
+Hopefully, this examples highlights the danger of "misplaced trust" binaries such as MSBuild. Companies should block their use unless explicitely required for certain users (e.g. developers). Oddvar Moe ([@Oddvarmoe](https://twitter.com/oddvarmoe) maintains an excellent [list](https://github.com/api0cradle/UltimateAppLockerByPassList) of AppLocker bypass techniques, which is a good list of "misplaced trust" binaries that IT departments should consider blocking.
 
-```C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe
-C:\Windows\SysWOW64\WindowsPowerShell\v1.0\powershell.exe```
+If possible, companies should also block macros for users who don't need this functionality. Additionally, if a company has decided to block PowerShell using Application Whitelisting, then the following files should be added to the blacklist.
 
-However, an attacker would still be able to instantiate a Powershell session, for example by downloading a custom binary. Defenders could respond by...
+```C:\>dir /B /S powershell.exe /S system.management.automation.dll
+C:\Windows\assembly\GAC_MSIL\System.Management.Automation\1.0.0.0__31bf3856ad364e35\System.Management.Automation.dll
+C:\Windows\Microsoft.NET\assembly\GAC_MSIL\System.Management.Automation\v4.0_3.0.0.0__31bf3856ad364e35\System.Management.Automation.dll
+C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe
+C:\Windows\SysWOW64\WindowsPowerShell\v1.0\powershell.exe
+C:\Windows\WinSxS\amd64_microsoft-windows-powershell-exe_31bf3856ad364e35_10.0.14393.0_none_968a6a2f18e547eb\powershell.exe
+C:\Windows\WinSxS\msil_system.management.automation_31bf3856ad364e35_1.0.0.0_none_6340379543bd8a03\System.Management.Automation.dll
+C:\Windows\WinSxS\msil_system.management.automation_31bf3856ad364e35_10.0.14393.0_none_f2bad6783ea6eb6a\System.Management.Automation.dll
+C:\Windows\WinSxS\wow64_microsoft-windows-powershell-exe_31bf3856ad364e35_10.0.14393.0_none_a0df14814d4609e6\powershell.exe```
 
-... and so the fight goes on :)
+However, there are multiple methods an attacker could use to instantiate a Powershell runspace without these files, for example by downloading a custom binary. Defenders could respond by...
 
-Mitigations
+... and so the back and forth attacker/defender dance continues :)
+
 
 
 
