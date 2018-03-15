@@ -57,15 +57,7 @@ Hopefully, this examples highlights the danger of "misplaced trust" binaries suc
 
 If possible, companies should also block macros for users who don't need this functionality. Additionally, if a company has decided to block PowerShell using Application Whitelisting, then the following files should be added to the blacklist.
 
-```C:\>dir /B /S powershell.exe /S system.management.automation.dll
-C:\Windows\assembly\GAC_MSIL\System.Management.Automation\1.0.0.0__31bf3856ad364e35\System.Management.Automation.dll
-C:\Windows\Microsoft.NET\assembly\GAC_MSIL\System.Management.Automation\v4.0_3.0.0.0__31bf3856ad364e35\System.Management.Automation.dll
-C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe
-C:\Windows\SysWOW64\WindowsPowerShell\v1.0\powershell.exe
-C:\Windows\WinSxS\amd64_microsoft-windows-powershell-exe_31bf3856ad364e35_10.0.14393.0_none_968a6a2f18e547eb\powershell.exe
-C:\Windows\WinSxS\msil_system.management.automation_31bf3856ad364e35_1.0.0.0_none_6340379543bd8a03\System.Management.Automation.dll
-C:\Windows\WinSxS\msil_system.management.automation_31bf3856ad364e35_10.0.14393.0_none_f2bad6783ea6eb6a\System.Management.Automation.dll
-C:\Windows\WinSxS\wow64_microsoft-windows-powershell-exe_31bf3856ad364e35_10.0.14393.0_none_a0df14814d4609e6\powershell.exe```
+<script src="https://gist.github.com/egre55/61b6cd2b23b605e6a017e81e5cb97f3e.js"></script>
 
 However, there are multiple methods an attacker could use to instantiate a Powershell runspace, for example by downloading a custom binary. In which case, Defenders could respond by...
 
