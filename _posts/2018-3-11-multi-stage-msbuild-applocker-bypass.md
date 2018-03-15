@@ -35,7 +35,7 @@ Good. Now we need a means of delivering the project file and executing MSBuild. 
 
 <script src="https://gist.github.com/egre55/563159175f8d6c1d31d7f3af77357549.js"></script>
 
-The WindowType parameter of the Shell function has been set to `vbHide` in order to avoid calling attention to our activities. Now, in order to stand a chance of the macro being executed, we need to dress the document appropriately.
+The `WindowType` parameter of the Shell function has been set to `vbHide` in order to avoid calling attention to our activities. Now, in order to stand a chance of the macro being executed, we need to dress the document appropriately.
 
 John Lambert ([@JohnLaTwC](https://twitter.com/johnlatwc)) regularly shares interesting phishing lures and payloads, if you need inspiration for simulated phishing campaigns ;) . I find the "Document created in newer/older Office version" lures especially convincing. John has put together [this](https://t.co/OwH28ltngy) compendium of macro based lures, which is great for educating users about the different techniques attackers use.
 
