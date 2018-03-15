@@ -15,7 +15,7 @@ AppLocker is a commonly used whitelisting technology and is built into Windows. 
 
 Since Powershell has gained recognition for being the attackers language of choice, many organisations are [increasingly] additionally blocking it. However, blocking powershell.exe is often not sufficient and there are many methods by which PowerShell can be instantiated to send a reverse shell reaching out of the organisation to an attacker.
 
-The post will document one such method, with the "misplaced trust binary" MSBuild.exe. In this scenario, the company has enabled AppLocker with default rules and has also blocked Powershell.
+The post will document one such method, with the "misplaced trust binary" (as Casey Smith puts it) MSBuild.exe. In this scenario, the company has enabled AppLocker with default rules and has also blocked Powershell.
 
 ![rules]({{ site.url }}/images/applocker-rules.png){: .center-image }
 
