@@ -1,7 +1,7 @@
 ---
 layout: post
 title: MSBuild AppLocker Bypass Phishing Payload
-published: false
+published: true
 ---
 ![msbuild]({{ site.url }}/images/msbuild-csproj.png){: .center-image }
 
@@ -67,7 +67,7 @@ C:\Windows\WinSxS\msil_system.management.automation_31bf3856ad364e35_1.0.0.0_non
 C:\Windows\WinSxS\msil_system.management.automation_31bf3856ad364e35_10.0.14393.0_none_f2bad6783ea6eb6a\System.Management.Automation.dll
 C:\Windows\WinSxS\wow64_microsoft-windows-powershell-exe_31bf3856ad364e35_10.0.14393.0_none_a0df14814d4609e6\powershell.exe```
 
-However, there are multiple methods an attacker could use to instantiate a Powershell runspace without these files, for example by downloading a custom binary. Defenders could respond by...
+However, there are multiple methods an attacker could use to instantiate a Powershell runspace, for example by downloading a custom binary. In which case, Defenders could respond by...
 
 ... and so the back and forth attacker/defender dance continues :)
 
