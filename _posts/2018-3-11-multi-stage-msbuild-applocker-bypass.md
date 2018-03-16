@@ -78,7 +78,7 @@ However, as mentioned, there are multiple methods an attacker could use to insta
 
 In which case, Defenders could respond by ... and so the back and forth attacker/defender dance continues :)
 
-Companies should also consider block macros for users who don't need this functionality, and consider crafting a custom whitelisting policy, mindful of the permissiveness of default rules.
+Companies should also consider blocking macros for users who don't need this functionality, and consider crafting a custom whitelisting policy, mindful of the permissiveness of default rules.
 
 Ultimately, an "assume breach" mentality is paramount, but before compromise we have to make it as hard as possible for an attacker to gain that initial foothold.
 
