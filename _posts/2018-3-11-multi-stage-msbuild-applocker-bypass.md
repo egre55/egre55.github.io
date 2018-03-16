@@ -78,15 +78,13 @@ Additionally, if a company has decided to block PowerShell using Application Whi
 
 Even after blocking the above, there are multiple methods an attacker could use to instantiate a Powershell runspace, for example by downloading a custom binary to one of the writable and executable folders within Windows that AppLocker default rules has whitelisted. On my computer, these are:
 
-```
-C:\Windows\Tasks\*
+`C:\Windows\Tasks\*
 C:\Windows\System32\catroot2\*
 C:\Windows\Temp\*
 C:\windows\System32\spool\drivers\color\*
 C:\Windows\SysWOW64\Tasks\*
 C:\Windows\debug\WIA\*
-C:\Windows\System32\Tasks\*
-```
+C:\Windows\System32\Tasks\*`
 
 Companies should also consider blocking macros for users who don't need this functionality, and consider crafting a custom whitelisting policy, mindful of the permissiveness of default rules.
 
