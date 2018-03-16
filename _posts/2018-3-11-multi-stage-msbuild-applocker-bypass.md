@@ -59,4 +59,4 @@ Yet, even after blocking the above, there are multiple methods an attacker could
 
 <script src="https://gist.github.com/egre55/47186f7a22de177af4785e80fc2dcb41.js"></script>
 
-This attacker/defender back and forth continues ad infinitum. Therefore it is important to organisations to formalise an ongoing cycle of testing, remediation and review, in order to achieve stronger system security. Ultimately, an "assume breach" mentality is paramount, but we have to make it as hard as possible for an attacker to gain that initial foothold.
+This attacker/defender back and forth continues ad infinitum. Therefore it is important for organisations to formalise an ongoing cycle of testing, remediation and review, in order to achieve stronger system security. Ultimately, an "assume breach" mentality is paramount, but we have to make it as hard as possible for an attacker to gain that initial foothold.
