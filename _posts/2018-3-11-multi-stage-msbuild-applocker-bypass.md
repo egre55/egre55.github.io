@@ -54,8 +54,10 @@ Hopefully, this example highlights the danger of "misplaced trust" binaries such
 
 <script src="https://gist.github.com/egre55/61b6cd2b23b605e6a017e81e5cb97f3e.js"></script>
 
-Yet as mentioned, even after blocking the above, there are multiple methods an attacker could use to instantiate a Powershell runspace. For example, an attacker could download a custom binary to one of the writable and executable folders within Windows that are whitelisted by AppLocker Default Rules. On my computer, these are:
+Yet as mentioned, even after blocking the above, there are multiple methods an attacker could use to instantiate a Powershell runspace. For example, an attacker could download a custom binary to one of the writable and executable folders within Windows that are whitelisted by AppLocker Default Rules. These folders can be audited using [this](https://raw.githubusercontent.com/3gstudent/Bypass-Windows-AppLocker/master/AppLockerBypassChecker-v1.ps1) PowerShell script by Tom Aafloen. On my computer, they are:
 
 <script src="https://gist.github.com/egre55/47186f7a22de177af4785e80fc2dcb41.js"></script>
 
-This attacker/defender back and forth continues ad infinitum. Therefore, it is important for organisations to formalise an ongoing cycle of testing, remediation and review, in order to achieve stronger system security. An "assume breach" mentality is also useful, as well as focusing on efforts to make it as hard as possible for an attacker to gain that initial foothold.
+These folders can then be blocked from being executable ... and so this attacker/defender back and forth continues ad infinitum.
+
+It is important for organisations to formalise an ongoing cycle of testing, remediation and review, in order to achieve stronger system security. An "assume breach" mentality is also useful, as well as focusing on efforts to make it as hard as possible for an attacker to gain that initial foothold.
