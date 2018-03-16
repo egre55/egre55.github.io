@@ -40,15 +40,11 @@ The `WindowType` parameter of the Shell function has been set to `vbHide` in ord
 
 John Lambert ([@JohnLaTwC](https://twitter.com/johnlatwc)) regularly shares interesting phishing lures and payloads, if you need inspiration for your simulated phishing campaigns. The "Document created in newer/older Office version" lure is one I find especially convincing. John has also put together [this](https://t.co/OwH28ltngy) compendium of macro based lures, which is great for educating users about the different techniques attackers use.
 
-Our FailedPayment.doc lure:
+FailedPayment.doc lure:
 
 ![lure]({{ site.url }}/images/phishing-lure.png){: .center-image }
 
-
-Now that the "malicious" document has been created we can test it out.
-
-Once the user opens the document and enables macros, our powashell.csproj is downloaded for MSBuild to execute, which in turn downloads and executes the Powershell reverse shell one-liner. All completely invisible to the user.
-
+Now that the "malicious" document has been created we can test it out. Once the user opens the document and enables macros, our powashell.csproj is downloaded for MSBuild to execute, which in turn downloads and executes the Powershell reverse shell one-liner. All completely invisible to the user.
 
 ![rules]({{ site.url }}/images/shell.png){: .center-image }
 
