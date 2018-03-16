@@ -12,23 +12,17 @@ People click, and so simulated phishing campaigns and user awareness training ar
 
 AppLocker is a commonly used whitelisting technology and is built into Windows. Commonly, the default AppLocker rules (listed below) are applied.
 
-
 ![rules]({{ site.url }}/images/applocker-default-rules.png){: .center-image }
-
 
 Since Powershell has gained recognition for being the attacker's language of choice, organisations are increasingly blocking it. However, blocking powershell.exe alone is not sufficient as there are many methods by which PowerShell can be instantiated to send a reverse shell reaching out of the organisation to an attacker.
 
 The post will document one such method, with (as Casey Smith puts it) the "misplaced trust binary" MSBuild.exe. In this scenario, the company has enabled AppLocker with Default Rules and has also blocked powershell.exe.
 
-
 ![rules]({{ site.url }}/images/applocker-rules.png){: .center-image }
-
 
 However, assuming that MSBuild.exe is allowed, we can have it execute a ".csproj" (Visual Studio .NET C# Project file) and instantiate a Powershell runspace using the System.Management.Automation.dll assembly. The powashell.csproj file below by Casey Smith ([@SubTee](https://twitter.com/subtee)) builds upon Jared Atkinson's ([@jaredcatkinson](https://twitter.com/jaredcatkinson)) and Justin Warner's ([@sixdub](https://twitter.com/sixdub)) work.
 
-
 <script src="https://gist.github.com/egre55/7a6b6018c9c5ae88c63bdb23879df4d0.js"></script>
-
 
 This executes the second stage of our payload via a PowerShell 3.0+ download cradle:
 
@@ -38,12 +32,9 @@ shell.ps1:
 
 <script src="https://gist.github.com/egre55/c058744a4240af6515eb32b2d33fbed3.js"></script>
 
-
 Good. Now we need a means of delivering the project file and executing MSBuild. The macro below will do just this.
 
-
 <script src="https://gist.github.com/egre55/563159175f8d6c1d31d7f3af77357549.js"></script>
-
 
 The `WindowType` parameter of the Shell function has been set to `vbHide` in order to avoid calling attention to our activities. Now, in order to stand a chance of the macro being executed, we need to dress the document appropriately.
 
@@ -64,7 +55,7 @@ Once the user opens the document and enables macros, our powashell.csproj is dow
 
 We can see that this payload is also an effective means of bypassing PowerShell Contrained Language mode. This was not a particularly stealthy attack as the .csproj is written to disk, and no attempt was made to obfuscate any part of the payload.
 
-Hopefully, this example highlights the danger of "misplaced trust" binaries such as MSBuild. organisations should block their use unless explicitely required for certain users (e.g. developers). Oddvar Moe ([@Oddvarmoe](https://twitter.com/oddvarmoe)) maintains an excellent [collection](https://github.com/api0cradle/UltimateAppLockerByPassList) of AppLocker bypass techniques, which is a good list of the "misplaced trust" binaries that IT departments should consider blocking. In addition to powershell.exe, organisations should consider blocking the following PowerShell binaries and assemblies.
+Hopefully, this example highlights the danger of "misplaced trust" binaries such as MSBuild. organisations should block their use unless explicitely required for certain users (e.g. developers). Organisations should also consider blocking macros for users who don't need this functionality, and consider implementing a custom whitelisting policy, mindful of the permissiveness of Default Rules. Oddvar Moe ([@Oddvarmoe](https://twitter.com/oddvarmoe)) maintains an excellent [collection](https://github.com/api0cradle/UltimateAppLockerByPassList) of AppLocker bypass techniques, which is a good list of the "misplaced trust" binaries that IT departments should consider blocking. In addition to powershell.exe, organisations should also consider blocking the following PowerShell binaries and assemblies.
 
 <script src="https://gist.github.com/egre55/61b6cd2b23b605e6a017e81e5cb97f3e.js"></script>
 
@@ -72,4 +63,4 @@ Yet, even after blocking the above, there are multiple methods an attacker could
 
 <script src="https://gist.github.com/egre55/47186f7a22de177af4785e80fc2dcb41.js"></script>
 
-Organisations should also consider blocking macros for users who don't need this functionality, and consider implementing a custom whitelisting policy, mindful of the permissiveness of Default Rules. Ultimately, an "assume breach" mentality is paramount, but before compromise we have to make it as hard as possible for an attacker to gain that initial foothold.
+This attacker/defender back and forth continues ad infinitum. Therefore it is important to organisations to formalise an ongoing cycle of testing, remediation and review, in order to achieve stronger system security. Ultimately, an "assume breach" mentality is paramount, but we have to make it as hard as possible for an attacker to gain that initial foothold.
