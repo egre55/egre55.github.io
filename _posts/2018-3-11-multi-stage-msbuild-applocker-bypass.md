@@ -66,11 +66,9 @@ We can see that this payload is also an effective means of bypassing PowerShell 
 
 This is not a particularly stealthy attack as the .csproj is written to disk, and no attempt was made to obfuscate any part of the payload.
 
-Hopefully, this example highlights the danger of "misplaced trust" binaries such as MSBuild. Companies should block their use unless explicitely required for certain users (e.g. developers).
+Hopefully, this example highlights the danger of "misplaced trust" binaries such as MSBuild. organisations should block their use unless explicitely required for certain users (e.g. developers). Oddvar Moe ([@Oddvarmoe](https://twitter.com/oddvarmoe)) maintains an excellent [collection](https://github.com/api0cradle/UltimateAppLockerByPassList) of AppLocker bypass techniques, which is a good list of the "misplaced trust" binaries that IT departments should consider blocking.
 
-Oddvar Moe ([@Oddvarmoe](https://twitter.com/oddvarmoe)) maintains an excellent [collection](https://github.com/api0cradle/UltimateAppLockerByPassList) of AppLocker bypass techniques, which is a good list of the "misplaced trust" binaries that IT departments should consider blocking.
-
-Additionally, if a company has decided to block PowerShell using Application Whitelisting, then the following PowerShell binaries and assemblies should be part of the exception block list.
+In addition to powershell.exe, organisations should consider blocking the following PowerShell binaries and assemblies.
 
 <script src="https://gist.github.com/egre55/61b6cd2b23b605e6a017e81e5cb97f3e.js"></script>
 
@@ -79,6 +77,6 @@ Even after blocking the above, there are multiple methods an attacker could use 
 
 <script src="https://gist.github.com/egre55/47186f7a22de177af4785e80fc2dcb41.js"></script>
 
-Companies should also consider blocking macros for users who don't need this functionality, and consider crafting a custom whitelisting policy, mindful of the permissiveness of Default Rules.
+organisations should also consider blocking macros for users who don't need this functionality, and consider crafting a custom whitelisting policy, mindful of the permissiveness of Default Rules.
 
 Ultimately, an "assume breach" mentality is paramount, but before compromise we have to make it as hard as possible for an attacker to gain that initial foothold.
