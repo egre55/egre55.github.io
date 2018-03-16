@@ -68,7 +68,7 @@ This is not a particularly stealthy attack as the .csproj is written to disk, an
 
 Hopefully, this example highlights the danger of "misplaced trust" binaries such as MSBuild. Companies should block their use unless explicitely required for certain users (e.g. developers). Oddvar Moe ([@Oddvarmoe](https://twitter.com/oddvarmoe)) maintains an excellent [collection](https://github.com/api0cradle/UltimateAppLockerByPassList) of AppLocker bypass techniques, which is a good list of the "misplaced trust" binaries that IT departments should consider blocking.
 
-Additionally, if a company has decided to block PowerShell using Application Whitelisting, then the following PowerShell binaries and assemblies should be part of the block list.
+Additionally, if a company has decided to block PowerShell using Application Whitelisting, then the following PowerShell binaries and assemblies should be part of the exception block list.
 
 
 <script src="https://gist.github.com/egre55/61b6cd2b23b605e6a017e81e5cb97f3e.js"></script>
