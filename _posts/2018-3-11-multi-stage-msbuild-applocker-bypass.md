@@ -74,9 +74,9 @@ Additionally, if a company has decided to block PowerShell using Application Whi
 <script src="https://gist.github.com/egre55/61b6cd2b23b605e6a017e81e5cb97f3e.js"></script>
 
 
-However, as mentioned, there are multiple methods an attacker could use to instantiate a Powershell runspace, for example by downloading a custom binary. In which case, Defenders could respond by...
+However, as mentioned, there are multiple methods an attacker could use to instantiate a Powershell runspace, for example by downloading a custom binary to one of the writable and executable folders within C:\Windows that AppLocker has whitelisted.
 
-... and so the back and forth attacker/defender dance continues :)
+In which case, Defenders could respond by ... and so the back and forth attacker/defender dance continues :)
 
 Companies should also consider block macros for users who don't need this functionality, and consider crafting a custom whitelisting policy, mindful of the permissiveness of default rules.
 
