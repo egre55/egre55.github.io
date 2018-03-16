@@ -62,18 +62,14 @@ Once the user opens the document and enables macros, our powashell.csproj is dow
 ![rules]({{ site.url }}/images/shell.png){: .center-image }
 
 
-We can see that this payload is also an effective means of bypassing PowerShell Contrained Language mode.
-
-This is not a particularly stealthy attack as the .csproj is written to disk, and no attempt was made to obfuscate any part of the payload.
+We can see that this payload is also an effective means of bypassing PowerShell Contrained Language mode. This was not a particularly stealthy attack as the .csproj is written to disk, and no attempt was made to obfuscate any part of the payload.
 
 Hopefully, this example highlights the danger of "misplaced trust" binaries such as MSBuild. organisations should block their use unless explicitely required for certain users (e.g. developers). Oddvar Moe ([@Oddvarmoe](https://twitter.com/oddvarmoe)) maintains an excellent [collection](https://github.com/api0cradle/UltimateAppLockerByPassList) of AppLocker bypass techniques, which is a good list of the "misplaced trust" binaries that IT departments should consider blocking. In addition to powershell.exe, organisations should consider blocking the following PowerShell binaries and assemblies.
 
 <script src="https://gist.github.com/egre55/61b6cd2b23b605e6a017e81e5cb97f3e.js"></script>
 
-Yet, even after blocking the above, there are multiple methods an attacker could use to instantiate a Powershell runspace, for example by downloading a custom binary to one of the writable and executable folders within Windows that AppLocker Default Rules has whitelisted. On my computer, these are:
+Yet, even after blocking the above, there are multiple methods an attacker could use to instantiate a Powershell runspace. For example, an attacker could download a custom binary to one of the writable and executable folders within Windows that is whitelisted by AppLocker Default Rules. On my computer, these are:
 
 <script src="https://gist.github.com/egre55/47186f7a22de177af4785e80fc2dcb41.js"></script>
 
-Organisations should also consider blocking macros for users who don't need this functionality, and consider implementing a custom whitelisting policy, mindful of the permissiveness of Default Rules.
-
-Ultimately, an "assume breach" mentality is paramount, but before compromise we have to make it as hard as possible for an attacker to gain that initial foothold.
+Organisations should also consider blocking macros for users who don't need this functionality, and consider implementing a custom whitelisting policy, mindful of the permissiveness of Default Rules. Ultimately, an "assume breach" mentality is paramount, but before compromise we have to make it as hard as possible for an attacker to gain that initial foothold.
