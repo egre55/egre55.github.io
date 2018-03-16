@@ -8,7 +8,7 @@ published: true
 
 ### With regular external vulnerability scans and (hopefully) pentration tests being undertaken, the perimeter is typically not the easy route into an organisation.
 
-People click, and so simulated phishing campaigns and user awareness training are extremely important. However, there can never be complete assurance against credential divulgence or execution of malicious code via crafted (or not so crafted) phishing attacks, and so it is critical that organisations implement a multi-layered "defence in depth" strategy. Application whitelisting is an important component of such a strategy, and is an effective means of ensuring that only approved applications can run.
+People click, and so simulated phishing campaigns and user awareness training are extremely important. However, there can never be complete assurance against credential divulgence or execution of malicious code via crafted (or not so crafted) phishing attacks, and so it is critical that organisations implement a multi-layered "defence in depth" strategy. Application Whitelisting is an important component of such a strategy, and is an effective means of ensuring that only approved applications can run.
 
 AppLocker is a commonly used whitelisting technology and is built into Windows. Commonly, the default AppLocker rules (listed below) are applied.
 
@@ -18,7 +18,7 @@ AppLocker is a commonly used whitelisting technology and is built into Windows. 
 
 Since Powershell has gained recognition for being the attacker's language of choice, organisations are increasingly blocking it. However, blocking powershell.exe alone is not sufficient as there are many methods by which PowerShell can be instantiated to send a reverse shell reaching out of the organisation to an attacker.
 
-The post will document one such method, with (as Casey Smith puts it) the "misplaced trust binary" MSBuild.exe. In this scenario, the company has enabled AppLocker with default rules and has also blocked powershell.exe.
+The post will document one such method, with (as Casey Smith puts it) the "misplaced trust binary" MSBuild.exe. In this scenario, the company has enabled AppLocker with Default Rules and has also blocked powershell.exe.
 
 
 ![rules]({{ site.url }}/images/applocker-rules.png){: .center-image }
@@ -72,20 +72,13 @@ Oddvar Moe ([@Oddvarmoe](https://twitter.com/oddvarmoe)) maintains an excellent 
 
 Additionally, if a company has decided to block PowerShell using Application Whitelisting, then the following PowerShell binaries and assemblies should be part of the exception block list.
 
-
 <script src="https://gist.github.com/egre55/61b6cd2b23b605e6a017e81e5cb97f3e.js"></script>
 
 
-Even after blocking the above, there are multiple methods an attacker could use to instantiate a Powershell runspace, for example by downloading a custom binary to one of the writable and executable folders within Windows that AppLocker default rules has whitelisted. On my computer, these are:
+Even after blocking the above, there are multiple methods an attacker could use to instantiate a Powershell runspace, for example by downloading a custom binary to one of the writable and executable folders within Windows that AppLocker Default Rules has whitelisted. On my computer, these are:
 
-`C:\Windows\Tasks\*
-C:\Windows\System32\catroot2\*
-C:\Windows\Temp\*
-C:\windows\System32\spool\drivers\color\*
-C:\Windows\SysWOW64\Tasks\*
-C:\Windows\debug\WIA\*
-C:\Windows\System32\Tasks\*`
+<script src="https://gist.github.com/egre55/47186f7a22de177af4785e80fc2dcb41.js"></script>
 
-Companies should also consider blocking macros for users who don't need this functionality, and consider crafting a custom whitelisting policy, mindful of the permissiveness of default rules.
+Companies should also consider blocking macros for users who don't need this functionality, and consider crafting a custom whitelisting policy, mindful of the permissiveness of Default Rules.
 
 Ultimately, an "assume breach" mentality is paramount, but before compromise we have to make it as hard as possible for an attacker to gain that initial foothold.
