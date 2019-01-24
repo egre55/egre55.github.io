@@ -6,7 +6,7 @@ published: true
 ![procmon]({{ site.url }}/images/procmon.png){: .center-image }
 
 
-### Auto-elevating binaries are a good source of bypasses for Windows User Account Control (UAC). The "SystemPropertiesAdvanced.exe" and other SystemProperties* binaries can be used to bypass UAC on Windows Server 2019.
+### Auto-elevating binaries are a good source of bypasses for Windows User Account Control (UAC). "SystemPropertiesAdvanced.exe" and other SystemProperties* binaries can be used to bypass UAC on Windows Server 2019.
 
 The built-in findstr utility can be used to confirm whether the manifest within the binary is set to auto-elevate:
 
