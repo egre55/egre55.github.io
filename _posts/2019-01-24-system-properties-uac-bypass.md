@@ -30,7 +30,7 @@ This results in a fair amount of output, and so additional Procmon filters to ex
 
 ![path]({{ site.url }}/images/path.png){: .center-image }
 
-This folder is writeable by unpriviledged users, who may want to install Apps from the Microsoft Store.
+This folder is writeable by unpriviledged users, in order to install Apps from the Microsoft Store.
 
 A DLL to spawn calc.exe is crafted (tested with DllMain) and saved to the WindowsApps folder. "SystemPropertiesAdvanced.exe" is executed again (from a Medium Integrity Level command prompt), and calc.exe is spawned as a High Integrity Level process.
 
