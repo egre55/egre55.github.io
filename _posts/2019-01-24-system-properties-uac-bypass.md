@@ -6,7 +6,7 @@ published: true
 ![procmon]({{ site.url }}/images/procmon.png){: .center-image }
 
 
-### Auto-elevating binaries are a good source of bypasses for Windows User Account Control (UAC). "SystemPropertiesAdvanced.exe" and other SystemProperties* binaries can be used to bypass UAC on Windows Server 2019.
+### Auto-elevating binaries are a good source of bypasses for Windows User Account Control (UAC). "SystemPropertiesAdvanced.exe" and other SystemProperties* binaries can be used to bypass UAC on Windows Server 2019 via a DLL hijacking vulnerability.
 
 The built-in findstr utility can be used to confirm whether the manifest within the binary is set to auto-elevate:
 
@@ -24,7 +24,7 @@ After setting the Procmon filter, the auto-elevating SysWOW64 binaries are execu
 
 ![filter]({{ site.url }}/images/filter.png){: .center-image }
 
-This results in a fair amount of output, and so additional Procmon filters to exclude paths starting with "C:\Windows" and "C:\Program " can be applied. Of note, the binary "SystemPropertiesAdvanced.exe" attempts to load the DLL "srrstr.dll" from the WindowsApps folder, as it is included in the Windows PATH variable.
+This results in a fair amount of output, and so additional Procmon filters to exclude paths starting with "C:\Windows" and "C:\Program " can be applied. Of note, the binary "C:\Windows\SysWOW64\SystemPropertiesAdvanced.exe" attempts to load the DLL "srrstr.dll" from the WindowsApps folder, as it is included in the Windows PATH variable.
 
 ![dll]({{ site.url }}/images/dll.png){: .center-image }
 
@@ -32,7 +32,7 @@ This results in a fair amount of output, and so additional Procmon filters to ex
 
 This folder is writeable by unpriviledged users, who may want to install Apps from the Microsoft Store.
 
-After crafting a DLL to spawn calc.exe (tested with DllMain), it is saved to the WindowsApps folder. "SystemPropertiesAdvanced.exe" is executed again (from a Medium Integrity Level command prompt), and calc.exe is spawned as a High Integrity Level process.
+A DLL to spawn calc.exe is crafted (tested with DllMain) and saved to the WindowsApps folder. "SystemPropertiesAdvanced.exe" is executed again (from a Medium Integrity Level command prompt), and calc.exe is spawned as a High Integrity Level process.
 
 ![uac-bypass]({{ site.url }}/images/uac-bypass.png){: .center-image }
 
