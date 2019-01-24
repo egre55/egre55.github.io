@@ -24,11 +24,9 @@ After setting the Procmon filter, the auto-elevating SysWOW64 binaries are execu
 
 ![filter]({{ site.url }}/images/filter.png){: .center-image }
 
-This results in a fair amount of output, and so additional Procmon filters to exclude paths starting with "C:\Windows" and "C:\Program " can be applied. Of note, the binary "SystemPropertiesAdvanced.exe" attempts to load the DLL "srrstr.dll" from the WindowsApps folder.
+This results in a fair amount of output, and so additional Procmon filters to exclude paths starting with "C:\Windows" and "C:\Program " can be applied. Of note, the binary "SystemPropertiesAdvanced.exe" attempts to load the DLL "srrstr.dll" from the WindowsApps folder, as it is included in the Windows PATH variable.
 
 ![dll]({{ site.url }}/images/dll.png){: .center-image }
-
-This location is included in the Windows PATH variable.
 
 ![path]({{ site.url }}/images/path.png){: .center-image }
 
