@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Bypassing UAC via SystemPropertiesAdvanced.exe DLL Hijack (Server 2019)
-published: false
+published: true
 ---
 ![procmon]({{ site.url }}/images/procmon.png){: .center-image }
 
