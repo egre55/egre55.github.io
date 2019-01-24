@@ -38,8 +38,9 @@ A DLL to spawn calc.exe is crafted (tested with DllMain) and saved to the Window
 
 In testing, this DLL hijack / UAC bypass also affects other SysWOW64 SystemProperties* binaries:
 
-SystemPropertiesAdvanced.exe
+```SystemPropertiesAdvanced.exe
 SystemPropertiesComputerName.exe
 SystemPropertiesHardware.exe
 SystemPropertiesProtection.exe
 SystemPropertiesRemote.exe
+```
