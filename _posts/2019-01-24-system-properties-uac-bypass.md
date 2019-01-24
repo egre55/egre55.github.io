@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Bypassing UAC with SystemPropertiesAdvanced.exe
+title: SystemPropertiesAdvanced.exe UAC Bypass
 published: true
 ---
 ![procmon]({{ site.url }}/images/procmon.png){: .center-image }
