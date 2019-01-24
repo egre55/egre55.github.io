@@ -1,8 +1,46 @@
 ---
 layout: post
-title: Bypassing UAC via SystemProperties* binaries DLL Hijack (Server 2019)
+title: Bypassing UAC via SystemPropertiesAdvanced.exe DLL Hijack (Server 2019)
 published: false
 ---
-## A New Post
+![procmon]({{ site.url }}/images/procmon.png){: .center-image }
 
-Enter text in [Markdown](http://daringfireball.net/projects/markdown/). Use the toolbar above, or click the **?** button for formatting help.
+
+### Auto-elevating binaries are a good source of bypasses for Windows User Account Control (UAC). The "SystemPropertiesAdvanced.exe" and other SystemProperties* binaries can be used to bypass UAC on Windows Server 2019.
+
+The built-in findstr utility can be used to confirm whether the manifest within the binary is set to auto-elevate:
+
+`findstr /C:"<autoElevate>true" C:\Windows\SysWOW64\SystemPropertiesAdvanced.exe`
+
+![auto-elevate]({{ site.url }}/images/auto-elevate.png){: .center-image }
+
+Alternatively, sigcheck can be used to dump the manifest.
+
+`sigcheck.exe -m C:\Windows\SysWOW64\SystemPropertiesAdvanced.exe`
+
+![manifest]({{ site.url }}/images/manifest.png){: .center-image }
+
+After setting the Procmon filter, the auto-elevating SysWOW64 binaries are executed.
+
+![filter]({{ site.url }}/images/filter.png){: .center-image }
+
+This results in a fair amount of output, and so additional Procmon filters to exclude paths starting with "C:\Windows" and "C:\Program " can be applied. Of note, the binary "SystemPropertiesAdvanced.exe" attempts to load the DLL "srrstr.dll" from the WindowsApps folder, which is included in the Windows PATH variable.
+
+C:\Users\%username%\AppData\Local\Microsoft\WindowsApps
+
+![path]({{ site.url }}/images/path.png){: .center-image }
+
+This folder is writeable by unpriviledged users, who may want to install Apps from the Microsoft Store.
+
+After crafting a DLL (tested with DllMain) and saving it to the WindowsApps folder, "SystemPropertiesAdvanced.exe" is executed again (from a Medium Intergrity Level command prompt), and calc.exe is spawned as a High Intergrity Level process.
+
+![uac-bypass]({{ site.url }}/images/uac-bypass.png){: .center-image }
+
+In testing, this DLL hijack / UAC bypass also affects other SysWOW64 SystemProperties* binaries:
+
+SystemPropertiesAdvanced.exe
+SystemPropertiesComputerName.exe
+SystemPropertiesHardware.exe
+SystemPropertiesProtection.exe
+SystemPropertiesRemote.exe
+
