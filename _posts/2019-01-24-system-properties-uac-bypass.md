@@ -32,7 +32,7 @@ C:\Users\%username%\AppData\Local\Microsoft\WindowsApps
 
 This folder is writeable by unpriviledged users, who may want to install Apps from the Microsoft Store.
 
-After crafting a DLL (tested with DllMain) and saving it to the WindowsApps folder, "SystemPropertiesAdvanced.exe" is executed again (from a Medium Intergrity Level command prompt), and calc.exe is spawned as a High Intergrity Level process.
+After crafting a DLL (tested with DllMain) and saving it to the WindowsApps folder, "SystemPropertiesAdvanced.exe" is executed again (from a Medium Integrity Level command prompt), and calc.exe is spawned as a High Integrity Level process.
 
 ![uac-bypass]({{ site.url }}/images/uac-bypass.png){: .center-image }
 
