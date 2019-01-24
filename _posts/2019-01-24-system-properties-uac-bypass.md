@@ -45,3 +45,5 @@ SystemPropertiesProtection.exe
 SystemPropertiesRemote.exe
 ```
 
+Setting UAC policy to "Always Notify" mitigates this issue.
+
