@@ -1,12 +1,12 @@
 ---
 layout: post
-title: SystemPropertiesAdvanced.exe UAC Bypass
+title: UAC Bypass using SystemPropertiesAdvanced.exe and DLL Hijacking
 published: true
 ---
 ![procmon]({{ site.url }}/images/procmon.png){: .center-image }
 
 
-### Auto-elevating binaries are a good source of bypasses for Windows User Account Control (UAC). "SystemPropertiesAdvanced.exe" and other SystemProperties* binaries can be used to bypass UAC on Windows Server 2019 via a DLL hijacking vulnerability.
+### Auto-elevating binaries are a good source of bypasses for Windows User Account Control (UAC). "SystemPropertiesAdvanced.exe" and other SystemProperties* binaries can be used to bypass UAC on Windows Server 2019 via DLL hijacking.
 
 The built-in findstr utility can be used to confirm whether the manifest within the binary is set to auto-elevate:
 
