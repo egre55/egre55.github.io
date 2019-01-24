@@ -30,8 +30,6 @@ This results in a fair amount of output, and so additional Procmon filters to ex
 
 This location is included in the Windows PATH variable.
 
-C:\Users\%username%\AppData\Local\Microsoft\WindowsApps
-
 ![path]({{ site.url }}/images/path.png){: .center-image }
 
 This folder is writeable by unpriviledged users, who may want to install Apps from the Microsoft Store.
