@@ -6,7 +6,7 @@ published: true
 ![msbuild]({{ site.url }}/images/multi_stage_msbuild_applocker_bypass.assets/msbuild-csproj.png){: .center-image }
 
 
-### With regular external vulnerability scans and (hopefully) pentration tests being undertaken, the perimeter is typically not the easy route into an organisation.
+### With regular external vulnerability scans and (hopefully) penetration tests being undertaken, the perimeter is typically not the easy route into an organisation.
 
 People click, and so simulated phishing campaigns and user awareness training are extremely important. However, there can never be complete assurance against credential divulgence or execution of malicious code via targetted (or not so targetted) phishing attacks, and so it is critical that organisations implement a multi-layered "defence in depth" strategy. Application Whitelisting is an important component of such a strategy, and is an effective means of ensuring that only approved applications can run.
 
@@ -48,9 +48,9 @@ Now that the "malicious" document has been created we can test it out. Once the 
 
 ![rules]({{ site.url }}/images/multi_stage_msbuild_applocker_bypass.assets/shell.png){: .center-image }
 
-We can see that this payload is also an effective means of bypassing PowerShell Contrained Language mode. This was not a particularly stealthy attack as the .csproj is written to disk, and no attempt was made to obfuscate any part of the payload.
+We can see that this payload is also an effective means of bypassing PowerShell Constrained Language mode. This was not a particularly stealthy attack as the .csproj is written to disk, and no attempt was made to obfuscate any part of the payload.
 
-Hopefully, this example highlights the danger of "misplaced trust" binaries such as MSBuild. Organisations should block their use unless explicitely required for certain users (e.g. developers), and should also consider blocking Office Macros for users who don't need this functionality, and implement a custom whitelisting policy, mindful of the permissiveness of AppLocker Default Rules. Oddvar Moe ([@Oddvarmoe](https://twitter.com/oddvarmoe)) maintains an excellent [collection](https://github.com/api0cradle/UltimateAppLockerByPassList) of AppLocker bypass techniques, which is a good list of the "misplaced trust" binaries that IT departments should consider blocking. In addition to powershell.exe, organisations should also consider blocking the following PowerShell binaries and assemblies.
+Hopefully, this example highlights the danger of "misplaced trust" binaries such as MSBuild. Organisations should block their use unless explicitly required for certain users (e.g. developers), and should also consider blocking Office Macros for users who don't need this functionality, and implement a custom whitelisting policy, mindful of the permissiveness of AppLocker Default Rules. Oddvar Moe ([@Oddvarmoe](https://twitter.com/oddvarmoe)) maintains an excellent [collection](https://github.com/api0cradle/UltimateAppLockerByPassList) of AppLocker bypass techniques, which is a good list of the "misplaced trust" binaries that IT departments should consider blocking. In addition to powershell.exe, organisations should also consider blocking the following PowerShell binaries and assemblies.
 
 <script src="https://gist.github.com/egre55/61b6cd2b23b605e6a017e81e5cb97f3e.js"></script>
 
