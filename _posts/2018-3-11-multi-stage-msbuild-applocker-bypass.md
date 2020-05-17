@@ -3,7 +3,7 @@ layout: post
 title: MSBuild AppLocker Bypass Phishing Payload
 published: true
 ---
-![msbuild]({{ site.url }}/images/msbuild-csproj.png){: .center-image }
+![msbuild]({{ site.url }}/images/multi_stage_msbuild_applocker_bypass.assets/msbuild-csproj.png){: .center-image }
 
 
 ### With regular external vulnerability scans and (hopefully) pentration tests being undertaken, the perimeter is typically not the easy route into an organisation.
@@ -12,13 +12,13 @@ People click, and so simulated phishing campaigns and user awareness training ar
 
 AppLocker is a commonly used whitelisting technology and is built into Windows. Commonly, the default AppLocker rules (listed below) are applied.
 
-![rules]({{ site.url }}/images/applocker-default-rules.png){: .center-image }
+![rules]({{ site.url }}/images/multi_stage_msbuild_applocker_bypass.assets/applocker-default-rules.png){: .center-image }
 
 Since Powershell has gained recognition for being the attacker's language of choice, organisations are increasingly blocking it. However, blocking powershell.exe alone is not sufficient as there are many methods by which PowerShell can be instantiated to send a reverse shell reaching out of the organisation to an attacker.
 
 This post will document one such method, the (as Casey Smith puts it) "misplaced trust" binary MSBuild.exe. In this scenario, the company has enabled AppLocker with Default Rules and has also blocked powershell.exe.
 
-![rules]({{ site.url }}/images/applocker-rules.png){: .center-image }
+![rules]({{ site.url }}/images/multi_stage_msbuild_applocker_bypass.assets/applocker-rules.png){: .center-image }
 
 Assuming that MSBuild.exe is allowed, we can invoke it to execute a ".csproj" (Visual Studio .NET C# Project file) and instantiate a Powershell runspace using the System.Management.Automation.dll assembly. The powashell.csproj file below by Casey Smith ([@SubTee](https://twitter.com/subtee)) builds upon Jared Atkinson's ([@jaredcatkinson](https://twitter.com/jaredcatkinson)) and Justin Warner's ([@sixdub](https://twitter.com/sixdub)) work.
 
@@ -42,11 +42,11 @@ John Lambert ([@JohnLaTwC](https://twitter.com/johnlatwc)) regularly shares inte
 
 FailedPayment.doc lure:
 
-![lure]({{ site.url }}/images/phishing-lure.png){: .center-image }
+![lure]({{ site.url }}/images/multi_stage_msbuild_applocker_bypass.assets/phishing-lure.png){: .center-image }
 
 Now that the "malicious" document has been created we can test it out. Once the user opens the document and enables macros, our powashell.csproj is downloaded for MSBuild to execute, which in turn downloads and executes the Powershell reverse shell one-liner. All completely invisible to the user.
 
-![rules]({{ site.url }}/images/shell.png){: .center-image }
+![rules]({{ site.url }}/images/multi_stage_msbuild_applocker_bypass.assets/shell.png){: .center-image }
 
 We can see that this payload is also an effective means of bypassing PowerShell Contrained Language mode. This was not a particularly stealthy attack as the .csproj is written to disk, and no attempt was made to obfuscate any part of the payload.
 
