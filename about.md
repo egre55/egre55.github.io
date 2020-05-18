@@ -5,7 +5,7 @@ permalink: /about/
 published: true
 ---
 
-I'm a SysAdmin, Security Engineer and Internal Penetration Tester
+Head of Content Development @hackthebox. Sysadmin, Security Engineer and Penetration Tester.
 
 ### Talks, Presentations, Random
 

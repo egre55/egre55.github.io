@@ -5,9 +5,9 @@ published: true
 ---
 ![gamified]({{ site.url }}/images/gamified_cybersecurity_education.assets/gamified.png){: .center-image }
 
-# Gamified Cybersecurity Education and Awareness in the Enterprise
+**Addressing the difficult challenges in cybersecurity requires alignment from all stakeholders in an organization. It is a complex topic, and disconnect in many areas can hinder this effort.** 
 
-Addressing the difficult challenges in cybersecurity requires alignment from all stakeholders in an organization. It is a complex topic, and disconnect in many areas can hinder this effort. This misalignment can be found between:
+This misalignment can be found between:
 
 - the skills imparted by courses, and the skills actually required by organizations.
 - candidates and HR executives, in terms of skill validation and demonstrating continued professional development.
